@@ -361,6 +361,7 @@
 												<f:param name="format" value="HSSF" />
 											</p:menuitem>
 											<p:menuitem id="mi-export-xlsx"
+												disabled="true"
 												value="#{msg['toolbar.export.format.xlsx']}"
 												onclick="fillExportForm('toolbar-form');"
 												action="#{pivotExportHandler.exportExcel}"
@@ -368,6 +369,7 @@
 												<f:param name="format" value="SXSSF" />
 											</p:menuitem>
 											<p:menuitem id="mi-export-pdf"
+												disabled="true"
 												value="#{msg['toolbar.export.format.pdf']}"
 												icon="ui-icon-print" onclick="PF('exportConfig').show();" />
 											<p:separator rendered="false" />
