@@ -2,6 +2,7 @@ package com.stratebi.stpivot4.analytics.ui.chart.ccc.render;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.ResourceBundle;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -55,19 +56,25 @@ public abstract class CccChartRenderer extends BaseChartRenderer {
         String clientId = chart.getClientId(context);
         String randonValue = String.valueOf(Math.random()).substring(2);
         
-        
-        
+        ResourceBundle bundle = context.getApplication().getResourceBundle(context, "msg");
+
+        String stackedLabel = bundle.getString("stpivot4.label.chart.stacked");
+        String horizontalLabel = bundle.getString("stpivot4.label.horizontal");
+        String legendLabel = bundle.getString("header.chart.legend");
+        String valuesLabel = bundle.getString("stpivot4.label.chart.showValues");
+        String chartLabel = bundle.getString("label.chart");
+				
         String panel =
             "<div class='ui-corner-all' style='border: 1px solid #5c9ccc; margin: 5px'>\n" +
             "   <div class='ui-dlg-bar ui-widget-header'>\n" +
-            "       <label><input name='chart" + randonValue + "Stacked' onclick='cccChartToggleStacked()' type='checkbox'" + (chart.isStacked() ? "checked" : "") + ">Stacked</label>\n" +
-            "       <label><input name='chart" + randonValue + "Horizontal' onclick='cccChartToggleOrientation()' type='checkbox' " + (chart.getOrientation().equals("horizontal") ? "checked" : "") + ">horizontal</label>\n" +
-            "       <label><input name='chart" + randonValue + "ShowLegend' onclick='cccChartToggleLegend()' type='checkbox' " + (StringUtils.isNotBlank(chart.getLegendPosition()) && !"none".equals(chart.getLegendPosition()) ? "checked" : "") + ">legend</label>\n" +
-            "       <label><input name='chart" + randonValue + "ValuesVisible' onclick='cccChartToggleShowValues()' type='checkbox' " + (chart.isShowDatatip() ? "checked" : "") + ">values</label>&nbsp;&nbsp;\n" +
+            "       <label><input name='chart" + randonValue + "Stacked' onclick='cccChartToggleStacked()' type='checkbox'" + (chart.isStacked() ? "checked" : "") + ">" + stackedLabel + "</label>\n" +
+            "       <label><input name='chart" + randonValue + "Horizontal' onclick='cccChartToggleOrientation()' type='checkbox' " + (chart.getOrientation().equals("horizontal") ? "checked" : "") + ">" + horizontalLabel + "</label>\n" +
+            "       <label><input name='chart" + randonValue + "ShowLegend' onclick='cccChartToggleLegend()' type='checkbox' " + (StringUtils.isNotBlank(chart.getLegendPosition()) && !"none".equals(chart.getLegendPosition()) ? "checked" : "") + ">" + legendLabel + "</label>\n" +
+            "       <label><input name='chart" + randonValue + "ValuesVisible' onclick='cccChartToggleShowValues()' type='checkbox' " + (chart.isShowDatatip() ? "checked" : "") + ">" + valuesLabel + "</label>&nbsp;&nbsp;\n" +
             "       <button id='btn" + clientId + "' class='ui-icon-newwin' role='button' aria-disabled='false'></button>\n" +
             "   </div>\n";
         writer.write(
-            "   <div id='dlg" + clientId + "' title='Chart' class='dlgChartCanvas'>\n" +
+            "   <div id='dlg" + clientId + "' title='" + chartLabel + "' class='dlgChartCanvas'>\n" +
             "      <div id='dlg-canvas" + clientId + "'></div>\n" +
             "   </div>\n");
 
