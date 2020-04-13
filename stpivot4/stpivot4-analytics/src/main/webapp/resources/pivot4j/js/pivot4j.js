@@ -289,8 +289,14 @@ function onTabSelected(event, ui) {
 }
 
 function onViewChanged() {
-	if (parent && parent.enableSave) {
-		parent.enableSave(true);
+	// CEM-403 отлов ошибки в iframe: Uncaught DOMException: Blocked a frame with origin ".." from accessing a cross-origin frame.
+	try{
+		if (parent && parent.enableSave) {
+			parent.enableSave(true);
+		}
+
+	}catch(e){
+		console.warn ("Error accessing parent: ", e);	
 	}
 }
 

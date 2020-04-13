@@ -43,9 +43,16 @@
 			return [".stpivot4"];
 		}
 
-		if (parent &amp;&amp; parent.enableSave) {
-			parent.enableSave(#{pivotStateManager.dirty});
+		// CEM-403 отлов ошибки в iframe: Uncaught DOMException: Blocked a frame with origin ".." from accessing a cross-origin frame.
+		try{
+			if (parent &amp;&amp; parent.enableSave) {
+				parent.enableSave(#{pivotStateManager.dirty});
+			}
+
+		}catch(e){
+			console.warn("Error accessing parent:", e);
 		}
+
 	</script>
 
 	<h:outputStylesheet library="pivot4j" name="css/pentaho.css" />
