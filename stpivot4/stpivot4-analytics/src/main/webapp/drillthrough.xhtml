@@ -15,6 +15,16 @@
 				onClose="PF('showDrillThroughSettingsButton').jq.removeClass('ui-force-hidden')">
 				<p:layoutUnit position="west" resizable="true" size="180"
 					closable="true" header="#{msg['header.drillThrough.selection']}">
+
+					<p:treeTable value="#{drillThroughHandler.cubeNode}" dynamic="true"
+								 cache="true" var="nodeData" animate="true" selectionMode="checkbox"
+								 selection="#{drillThroughHandler.selection}"
+								 styleClass="navigator cube-navigator">
+						<p:column>
+							<h:outputText value="#{nodeData.name}"/>
+						</p:column>
+					</p:treeTable>
+					<!--  avoid  Uncaught TypeError: Cannot read property 'indexOf' of undefined at c.removeDescendantsFromSelection (primefaces.js?ln=primefaces&v=5.0:46)
 					<p:tree value="#{drillThroughHandler.cubeNode}" dynamic="true"
 						cache="true" var="node" animate="true" selectionMode="checkbox"
 						selection="#{drillThroughHandler.selection}"
@@ -39,6 +49,7 @@
 								styleClass="node-member" />
 						</p:treeNode>
 					</p:tree>
+					 -->
 				</p:layoutUnit>
 
 				<p:layoutUnit position="center">
