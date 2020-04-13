@@ -66,7 +66,9 @@
 										<path>WEB-INF/lib</path>
 										<destination>lib</destination>
 										<include>*.jar</include>
-										<exclude>olap4j*,xercesImpl*,xml-apis*,xalan*,xmlParser*,xmlbeans*,eigenbase*,derby*,mondrian*,commons-logging*,log4j*,slf4j*,poi*,serializer*</exclude>
+										<!--<exclude>olap4j*,xercesImpl*,xml-apis*,xalan*,xmlParser*,xmlbeans*,eigenbase*,derby*,mondrian*,commons-logging*,log4j*,slf4j*,poi*,serializer*</exclude>-->
+										<!-- pentaho 8.1 uses new versions of poi* libraries -->
+										<exclude>olap4j*,xercesImpl*,xml-apis*,xalan*,xmlParser*,xmlbeans*,eigenbase*,derby*,mondrian*,commons-logging*,log4j*,slf4j*,serializer*</exclude>
 									</resource>
 									<resource>
 										<path>resources</path>
