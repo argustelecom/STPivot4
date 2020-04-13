@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import com.stratebi.stpivot4.analytics.ui.chart.CCCDefaultChartRenderer;
 import org.apache.commons.configuration.CombinedConfiguration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.FileConfiguration;
@@ -78,7 +79,7 @@ public class ReportContent implements Serializable {
 		}
 
 		if (state.getChartState() != null) {
-			DefaultChartRenderer renderer = new DefaultChartRenderer();
+			DefaultChartRenderer renderer = new CCCDefaultChartRenderer();
 
 			renderer.restoreState(state.getChartState());
 
@@ -241,7 +242,7 @@ public class ReportContent implements Serializable {
 		}
 
 		try {
-			DefaultChartRenderer renderer = new DefaultChartRenderer();
+			DefaultChartRenderer renderer = new CCCDefaultChartRenderer();
 			renderer.restoreSettings(configuration.configurationAt("chart"));
 
 			state.setChartState(renderer.saveState());
