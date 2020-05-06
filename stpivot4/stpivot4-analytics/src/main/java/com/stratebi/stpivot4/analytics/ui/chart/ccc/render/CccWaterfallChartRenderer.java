@@ -2,6 +2,7 @@ package com.stratebi.stpivot4.analytics.ui.chart.ccc.render;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.ResourceBundle;
 
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
@@ -81,11 +82,13 @@ public class CccWaterfallChartRenderer extends CccMatrixDataChartRenderer {
                 resultset += ",\n";
             }
         }
+        ResourceBundle bundle = context.getApplication().getResourceBundle(
+                context, "msg");
         resultset += "]";
         String metadata = "metadata:[\n" +
-                    "    {'colIndex':0,'colType':'String','colName':'Series'},\n" +
-                    "    {'colIndex':1,'colType':'String','colName':'Category'},\n" +
-                    "    {'colIndex':2,'colType':'Numeric','colName':'Value'}\n" +
+                    "    {'colIndex':0,'colType':'String','colName':'" + bundle.getString("stpivot4.label.chart.hint.Series") + "'},\n" +
+                    "    {'colIndex':1,'colType':'String','colName':'" +  bundle.getString("stpivot4.label.chart.hint.Category")+ "'},\n" +
+                    "    {'colIndex':2,'colType':'Numeric','colName':'" + bundle.getString("stpivot4.label.chart.hint.Value") + "'}\n" +
                     "]";
 
         String data = "var data" + randonValue + " = {\n" +
